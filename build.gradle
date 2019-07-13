@@ -16,23 +16,23 @@ ext {
     junitVersion = '4.12'
     seleniumVersion = '3.141.59'
     springVersion = '5.1.8.RELEASE'
-    cucumberVersion = '4.5.2'
+    cucumberVersion = '4.4.0'
 }
 
 dependencies {
-    compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.0'
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+    implementation group: 'org.apache.commons', name: 'commons-collections4', version: '4.0'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
 
-    compile group: 'org.apache.logging.log4j', name: 'log4j-api',version: "$log4jVersion"
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: "$log4jVersion"
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api',version: "$log4jVersion"
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: "$log4jVersion"
 
-    compile group: 'junit', name: 'junit', version: "$junitVersion"
+    testImplementation group: 'junit', name: 'junit', version: "$junitVersion"
 
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: "$seleniumVersion"
-    compile group: 'io.cucumber', name: 'cucumber-java', version: "$cucumberVersion"
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: "$seleniumVersion"
+    testImplementation group: 'io.cucumber', name: 'cucumber-java', version: "$cucumberVersion"
+    testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: "$cucumberVersion"
 
-    compile group: 'org.springframework', name: 'spring-core', version: "$springVersion"
-    compile group: 'org.springframework', name: 'spring-context', version: "$springVersion"
-    compile group: 'org.springframework', name: 'spring-beans', version: "$springVersion"
-
+    implementation group: 'org.springframework', name: 'spring-core', version: "$springVersion"
+    implementation group: 'org.springframework', name: 'spring-context', version: "$springVersion"
+    implementation group: 'org.springframework', name: 'spring-beans', version: "$springVersion"
 }
