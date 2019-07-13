@@ -16,6 +16,7 @@ ext {
     junitVersion = '4.12'
     seleniumVersion = '3.141.59'
     springVersion = '5.1.8.RELEASE'
+    cucumberVersion = '4.5.2'
 }
 
 dependencies {
@@ -28,6 +29,7 @@ dependencies {
     compile group: 'junit', name: 'junit', version: "$junitVersion"
 
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: "$seleniumVersion"
+    compile group: 'io.cucumber', name: 'cucumber-java', version: "$cucumberVersion"
 
     compile group: 'org.springframework', name: 'spring-core', version: "$springVersion"
     compile group: 'org.springframework', name: 'spring-context', version: "$springVersion"
