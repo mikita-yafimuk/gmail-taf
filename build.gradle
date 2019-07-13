@@ -14,6 +14,7 @@ repositories {
 ext {
     log4jVersion = '2.12.0'
     junitVersion = '4.12'
+    seleniumVersion = '3.141.59'
 }
 
 dependencies {
@@ -24,5 +25,7 @@ dependencies {
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: "$log4jVersion"
 
     compile group: 'junit', name: 'junit', version: "$junitVersion"
+
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: "$seleniumVersion"
 
 }
