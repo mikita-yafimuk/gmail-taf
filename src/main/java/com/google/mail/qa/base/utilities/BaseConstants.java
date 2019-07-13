@@ -6,5 +6,5 @@ public class BaseConstants
 	{
 	}
 
-	String applicationURL = "https://mail.google.com/";
+	public static final String applicationURL = "https://mail.google.com/";
 }
