@@ -5,7 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.google.mail.qa.base.annotations.QAComponent;
 import com.google.mail.qa.base.pages.AbstractPage;
-import com.google.mail.qa.base.utilities.BaseConstants;
 
 @QAComponent
 public class LoginPage extends AbstractPage
@@ -13,10 +12,10 @@ public class LoginPage extends AbstractPage
 	public void openApplicationURL()
 	{
 		WebDriver webDriver = new ChromeDriver();
-		webDriver.get(BaseConstants.applicationURL);
+		webDriver.get(testConfiguration.getApplicationURL());
 		try
 		{
-			Thread.sleep(10_000);
+			Thread.sleep(3_000);
 		}
 		catch (InterruptedException e)
 		{

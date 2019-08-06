@@ -1,4 +1,4 @@
-package com.google.mail.qa;
+package com.google.mail.qa.base;
 
 import org.junit.runner.RunWith;
 

@@ -16,5 +16,4 @@ import org.springframework.stereotype.Component;
 @Component
 public @interface QAComponent
 {
-	String value() default "gmail";
 }

@@ -26,12 +26,12 @@ dependencies {
     implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: "$log4jVersion"
     implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: "$log4jVersion"
 
-    testImplementation group: 'junit', name: 'junit', version: "$junitVersion"
+    implementation group: 'junit', name: 'junit', version: "$junitVersion"
 
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: "$seleniumVersion"
     implementation group: 'io.cucumber', name: 'cucumber-spring', version: "$cucumberVersion"
-    testImplementation group: 'io.cucumber', name: 'cucumber-java', version: "$cucumberVersion"
-    testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: "$cucumberVersion"
+    implementation group: 'io.cucumber', name: 'cucumber-java', version: "$cucumberVersion"
+    implementation group: 'io.cucumber', name: 'cucumber-junit', version: "$cucumberVersion"
 
     implementation group: 'org.springframework', name: 'spring-core', version: "$springVersion"
     implementation group: 'org.springframework', name: 'spring-context', version: "$springVersion"
