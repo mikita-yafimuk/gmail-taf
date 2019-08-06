@@ -7,7 +7,8 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(plugin = { "pretty", "json:target/cucumber.json", "html:target/cucumber.html" },
-		features = "src/test/resources")
+		glue = "com.google.mail.qa",
+		features = "src/main/resources")
 public class CucumberTestRunner
 {
 }

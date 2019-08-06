@@ -21,6 +21,6 @@ public class LoginPage extends AbstractPage
 		{
 			e.printStackTrace();
 		}
-		webDriver.close();
+		webDriver.quit();
 	}
 }
