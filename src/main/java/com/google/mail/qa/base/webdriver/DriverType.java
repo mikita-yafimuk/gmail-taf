@@ -1,5 +1,12 @@
 package com.google.mail.qa.base.webdriver;
 
+import java.util.Arrays;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
 import com.google.mail.qa.base.exceptions.BaseException;
 
 /**
@@ -7,30 +14,35 @@ import com.google.mail.qa.base.exceptions.BaseException;
  */
 public enum DriverType
 {
-	CHROME("Chrome"),
-	FIREFOX("Firefox");
+	CHROME(ChromeDriver.class),
+	FIREFOX(FirefoxDriver.class),
+	IF(InternetExplorerDriver.class);
 
-	private String driverType;
+	private Class<? extends RemoteWebDriver> driverType;
 
-	DriverType(String driverType)
+	DriverType(Class<? extends RemoteWebDriver> driverType)
 	{
 		this.driverType = driverType;
 	}
 
-	public String getDriverType()
+	public Class<? extends RemoteWebDriver> getDriverType()
 	{
 		return this.driverType;
 	}
 
 	public static DriverType getDriverByName(String driverName)
 	{
-		for (DriverType driverType : DriverType.values())
-		{
-			if (driverType.getDriverType().equalsIgnoreCase(driverName))
-			{
-				return driverType;
-			}
-		}
-		throw new BaseException("Unknown driver name: " + driverName);
+		return Arrays.stream(DriverType.values())
+				.filter(driverType -> {
+					try
+					{
+						return Class.forName(driverName).equals(driverType.getDriverType());
+					}
+					catch (ClassNotFoundException e)
+					{
+						return false;
+					}
+				}).findFirst()
+				.orElseThrow(() -> new BaseException("Unknown driver name: " + driverName));
 	}
 }
