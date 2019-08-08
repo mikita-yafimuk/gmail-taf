@@ -11,36 +11,36 @@ public class BaseByFactory implements IBaseByFactory
 	@Override
 	public BaseBy className(String className, String... arguments)
 	{
-		return new BaseBy(BaseBy.LocatorTypes.BY_CLASS_NAME, className, arguments);
+		return new BaseBy(BaseBy.LocatorType.BY_CLASS_NAME, className, arguments);
 	}
 
 	@Override
 	public BaseBy ID(String id, String... arguments)
 	{
-		return new BaseBy(BaseBy.LocatorTypes.BY_ID, id, arguments);
+		return new BaseBy(BaseBy.LocatorType.BY_ID, id, arguments);
 	}
 
 	@Override
 	public BaseBy name(String name, String... arguments)
 	{
-		return new BaseBy(BaseBy.LocatorTypes.BY_NAME, name, arguments);
+		return new BaseBy(BaseBy.LocatorType.BY_NAME, name, arguments);
 	}
 
 	@Override
 	public BaseBy cssSelector(String cssSelector, String... arguments)
 	{
-		return new BaseBy(BaseBy.LocatorTypes.BY_CSS_SELECTOR, cssSelector, arguments);
+		return new BaseBy(BaseBy.LocatorType.BY_CSS_SELECTOR, cssSelector, arguments);
 	}
 
 	@Override
 	public BaseBy linkText(String linkText, String... arguments)
 	{
-		return new BaseBy(BaseBy.LocatorTypes.BY_LINK_TEXT, linkText, arguments);
+		return new BaseBy(BaseBy.LocatorType.BY_LINK_TEXT, linkText, arguments);
 	}
 
 	@Override
 	public BaseBy xpath(String xpath, String... arguments)
 	{
-		return new BaseBy(BaseBy.LocatorTypes.BY_XPATH, xpath, arguments);
+		return new BaseBy(BaseBy.LocatorType.BY_XPATH, xpath, arguments);
 	}
 }
