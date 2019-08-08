@@ -12,37 +12,37 @@ import com.google.mail.qa.base.exceptions.BaseException;
 /**
  * @author Mikita Yafimuk
  */
-public enum DriverType
+public enum DriverClass
 {
 	CHROME(ChromeDriver.class),
 	FIREFOX(FirefoxDriver.class),
 	IF(InternetExplorerDriver.class);
 
-	private Class<? extends RemoteWebDriver> driverType;
+	private Class<? extends RemoteWebDriver> driverClass;
 
-	DriverType(Class<? extends RemoteWebDriver> driverType)
+	DriverClass(Class<? extends RemoteWebDriver> driverClass)
 	{
-		this.driverType = driverType;
+		this.driverClass = driverClass;
 	}
 
-	public Class<? extends RemoteWebDriver> getDriverType()
+	public Class<? extends RemoteWebDriver> getDriverClass()
 	{
-		return this.driverType;
+		return this.driverClass;
 	}
 
-	public static DriverType getDriverByName(String driverName)
+	public static DriverClass getDriverClassByName(String driverClassName)
 	{
-		return Arrays.stream(DriverType.values())
-				.filter(driverType -> {
+		return Arrays.stream(DriverClass.values())
+				.filter(driverClass -> {
 					try
 					{
-						return Class.forName(driverName).equals(driverType.getDriverType());
+						return Class.forName(driverClassName).equals(driverClass.getDriverClass());
 					}
 					catch (ClassNotFoundException e)
 					{
 						return false;
 					}
 				}).findFirst()
-				.orElseThrow(() -> new BaseException("Unknown driver name: " + driverName));
+				.orElseThrow(() -> new BaseException("Unknown driver name: " + driverClassName));
 	}
 }
