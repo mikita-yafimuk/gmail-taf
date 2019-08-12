@@ -7,6 +7,8 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
+	<import resource="classpath:properties.xml"/>
+
 	<context:property-placeholder location="classpath:config.properties" system-properties-mode="OVERRIDE"/>
 
 	<bean id="applicationContextProvider" class="com.google.mail.qa.base.utilities.ApplicationContextProvider"/>
