@@ -5,7 +5,7 @@ package com.google.mail.qa.base.elements.locators;
  */
 public class BaseBy
 {
-	enum LocatorType
+	public enum LocatorType
 	{
 		BY_CLASS_NAME,
 		BY_CSS_SELECTOR,
@@ -24,5 +24,20 @@ public class BaseBy
 		this.type = type;
 		this.key = key;
 		this.arguments = arguments;
+	}
+
+	public LocatorType getType()
+	{
+		return type;
+	}
+
+	public String getKey()
+	{
+		return key;
+	}
+
+	public String[] getArguments()
+	{
+		return arguments;
 	}
 }
