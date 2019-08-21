@@ -5,11 +5,17 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.google.mail.qa.base.annotations.QAComponent;
+import com.google.mail.qa.base.utilities.TestConfiguration;
 
 /**
  * @author Mikita Yafimuk
@@ -17,8 +23,17 @@ import com.google.mail.qa.base.annotations.QAComponent;
 @QAComponent
 public class WebDriver
 {
+	@Autowired
+	private TestConfiguration testConfiguration;
+
 	private DriverClass driverClass;
 	private EventFiringWebDriver eventFiringWebDriver;
+
+	@Value("${driverType}")
+	public void setDriverClass(String driverClass)
+	{
+		this.driverClass = DriverClass.getDriverClassByName(driverClass);
+	}
 
 	@PostConstruct
 	public void init() throws Exception
@@ -37,14 +52,36 @@ public class WebDriver
 		eventFiringWebDriver.quit();
 	}
 
+	/**
+	 * Navigates to defined URL
+	 *
+	 * @param URL
+	 */
 	public void goToURL(String URL)
 	{
 		eventFiringWebDriver.get(URL);
 	}
 
-	@Value("${driverType}")
-	public void setDriverClass(String driverClass)
+	/**
+	 * Waits for element with default timeout
+	 *
+	 * @param by
+	 * @return {@link WebElement}
+	 */
+	public WebElement waitPresenceOfElementLocated(By by)
 	{
-		this.driverClass = DriverClass.getDriverClassByName(driverClass);
+		return waitPresenceOfElementLocated(by, testConfiguration.getDefaultWaitTime());
+	}
+
+	/**
+	 * Waits for element with defined timeout
+	 *
+	 * @param by
+	 * @param timeout
+	 * @return {@link WebElement}
+	 */
+	public WebElement waitPresenceOfElementLocated(By by, int timeout)
+	{
+		return new WebDriverWait(eventFiringWebDriver, timeout).until(ExpectedConditions.presenceOfElementLocated(by));
 	}
 }

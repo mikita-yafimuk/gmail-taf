@@ -13,13 +13,16 @@ public class TestConfiguration
 	@Value("${gmail.url}")
 	private String applicationURL;
 
+	@Value("${defaultWaitTime}")
+	private int defaultWaitTime;
+
 	public String getApplicationURL()
 	{
 		return applicationURL;
 	}
 
-	public void setApplicationURL(String applicationURL)
+	public int getDefaultWaitTime()
 	{
-		this.applicationURL = applicationURL;
+		return defaultWaitTime;
 	}
 }
