@@ -8,6 +8,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.google.mail.qa.base.annotations.QAComponent;
 import com.google.mail.qa.base.elements.PageElement;
 import com.google.mail.qa.base.elements.TextElement;
 import com.google.mail.qa.base.elements.locators.BaseBy;
@@ -20,6 +21,7 @@ import com.google.mail.qa.base.webdriver.WebDriverWaiter;
 /**
  * @author Mikita Yafimuk
  */
+@QAComponent
 public class PageElementFactory implements IPageElementFactory
 {
 	@Autowired
