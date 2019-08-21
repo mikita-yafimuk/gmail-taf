@@ -50,7 +50,7 @@ public class WebDriverWaiter
 	 * Waits for elements with default timeout
 	 *
 	 * @param by
-	 * @return {@link List <WebElement>}
+	 * @return {@link List<WebElement>}
 	 */
 	public List<WebElement> waitPresenceOfElementsLocated(By by)
 	{
