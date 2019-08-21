@@ -1,5 +1,6 @@
 package com.google.mail.qa.base.elements.factory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -14,6 +15,7 @@ import com.google.mail.qa.base.exceptions.BaseException;
 import com.google.mail.qa.base.utilities.PropertiesManager;
 import com.google.mail.qa.base.utilities.TestConfiguration;
 import com.google.mail.qa.base.webdriver.WebDriver;
+import com.google.mail.qa.base.webdriver.WebDriverWaiter;
 
 /**
  * @author Mikita Yafimuk
@@ -23,8 +25,9 @@ public class PageElementFactory implements IPageElementFactory
 	@Autowired
 	private WebDriver webDriver;
 	@Autowired
+	private WebDriverWaiter webDriverWaiter;
+	@Autowired
 	private TestConfiguration testConfiguration;
-
 	@Autowired
 	private PropertiesManager propertiesManager;
 
@@ -32,7 +35,7 @@ public class PageElementFactory implements IPageElementFactory
 	public <T extends PageElement> T getElement(Class<T> pageElementType, BaseBy baseBy, int timeout)
 	{
 		By by = translateBy(baseBy);
-		WebElement webElement = webDriver.waitPresenceOfElementLocated(by, timeout);
+		WebElement webElement = webDriverWaiter.waitPresenceOfElementLocated(by, timeout);
 		return castElement(pageElementType, by, webElement);
 	}
 
@@ -49,7 +52,7 @@ public class PageElementFactory implements IPageElementFactory
 		WebElement webElement;
 		try
 		{
-			webElement = webDriver.waitPresenceOfElementLocated(by, 0);
+			webElement = webDriverWaiter.waitPresenceOfElementLocated(by, 0);
 		}
 		catch (TimeoutException e)
 		{
@@ -62,13 +65,18 @@ public class PageElementFactory implements IPageElementFactory
 	@Override
 	public <T extends PageElement> List<T> getElements(Class<T> pageElementType, BaseBy baseBy, int timeout)
 	{
-		return null;
+		By by = translateBy(baseBy);
+		List<WebElement> webElements = webDriverWaiter.waitPresenceOfElementsLocated(by, timeout);
+
+		List<T> pageElements = new ArrayList<>();
+		webElements.forEach(webElement -> pageElements.add(castElement(pageElementType, by, webElement)));
+		return pageElements;
 	}
 
 	@Override
 	public <T extends PageElement> List<T> getElements(Class<T> pageElementType, BaseBy baseBy)
 	{
-		return null;
+		return getElements(pageElementType, baseBy, 0);
 	}
 
 	/**
