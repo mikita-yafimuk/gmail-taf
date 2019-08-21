@@ -18,7 +18,11 @@ public class PropertiesManager
 
 	public String get(String key)
 	{
-		Object message = messageSource.getMessage(key, null, Locale.getDefault());
-		return message != null ? message.toString() : null;
+		return messageSource.getMessage(key, null, Locale.getDefault());
+	}
+
+	public String get(String key, String... arguments)
+	{
+		return messageSource.getMessage(key, arguments, Locale.getDefault());
 	}
 }

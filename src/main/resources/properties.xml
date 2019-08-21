@@ -8,6 +8,7 @@
 		<constructor-arg>
 			<list>
 				<value>override</value>
+				<value>config</value>
 				<value>com/google/mail/qa/locators/locators</value>
 			</list>
 		</constructor-arg>
